@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-CN" data-template="quiet-blue-gray" data-page-node-id="FNqPsyEsqdEaD67dJRKGYt">
+<head data-page-node-id="CotNy78onOgVefOLQsznv6">
+  <meta charset="utf-8" data-page-node-id="9XGczin8Y0mWvggGvqD5Nz">
+  <title>杨琪萱-Quiet Blue Gray（轻奢蓝灰·单栏竖排）</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* 低饱和蓝灰五级色阶（全页只用这五级） */
+      --ink:   #1b2432;
+      --navy:  #28405c;
+      --steel: #5b7794;
+      --body:  #45525f;
+      --muted: #8794a3;
+      --rule:  #dde3ea;
+      --rule-soft: #eef2f6;
+      --paper: #ffffff;
+    }
+
+    html, body {
+      /* 屏幕/预览画布：冷调蓝灰光晕 + 极浅方格；纸面本身纯白 */
+      background:
+        radial-gradient(880px 520px at 4% -10%, rgba(91, 119, 148, 0.16), transparent 60%),
+        radial-gradient(760px 460px at 104% 2%, rgba(40, 64, 92, 0.14), transparent 58%),
+        radial-gradient(800px 560px at 50% 118%, rgba(91, 119, 148, 0.10), transparent 62%),
+        repeating-linear-gradient(0deg, rgba(40, 64, 92, 0.045) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, rgba(40, 64, 92, 0.045) 0 1px, transparent 1px 24px),
+        linear-gradient(160deg, #f8fafc 0%, #f1f4f8 48%, #f7f9fb 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "PingFangSC-Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body { min-height: 100%; padding: 10mm 0; }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      background: var(--paper);
+      margin: 0 auto;
+      padding: 9mm 15mm 7mm;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 40px rgba(27, 36, 50, 0.18), 0 2px 8px rgba(27, 36, 50, 0.07);
+    }
+
+    /* ---------- 页头 ---------- */
+    .head { flex: 0 0 auto; }
+    .head-kicker {
+      font-size: 7.6pt;
+      letter-spacing: 0.22em;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .head-name {
+      margin-top: 1.8mm;
+      font-size: 25pt;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .head-role {
+      margin-top: 1.5mm;
+      font-size: 10pt;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+    }
+    .head-contact {
+      margin-top: 2.2mm;
+      font-size: 8.8pt;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+    }
+    .head-contact .sep {
+      margin: 0 2.4mm;
+      color: var(--rule);
+    }
+    /* 双细线：一条实线 + 一条更浅的线，编辑体例的经典做法 */
+    .head-rule {
+      margin-top: 2.8mm;
+      border-top: 1pt solid var(--navy);
+      position: relative;
+    }
+    .head-rule::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1.1mm;
+      border-top: 0.5pt solid var(--rule);
+    }
+
+    /* ---------- 章节：单栏竖排，编号 + 发丝线 ---------- */
+    .sec { flex: 0 0 auto; }
+    .head + .sec { margin-top: 2.9mm; }
+    .sec + .sec { margin-top: 2.6mm; }
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 3mm;
+      padding-top: 1.4mm;
+      border-top: 0.7pt solid var(--rule);
+      margin-bottom: 1.8mm;
+    }
+    .sec-no {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 9.4pt;
+      line-height: 1;
+      color: var(--steel);
+      letter-spacing: 0.06em;
+    }
+    .sec-name {
+      font-size: 10.4pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+    }
+    .sec-en {
+      margin-left: auto;
+      font-size: 7.2pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #b3bec9;
+    }
+
+    /* ---------- 概述 ---------- */
+    .intro-body {
+      font-size: 9.6pt;
+      line-height: 1.5;
+      color: var(--body);
+      text-align: justify;
+    }
+    .intro-body .lead { font-weight: 600; color: var(--ink); }
+
+    /* ---------- 条目（单栏，标题左 / 赛事右） ---------- */
+    .entry + .entry { margin-top: 2.8mm; }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 5mm;
+    }
+    .entry-title {
+      font-size: 10.4pt;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.34;
+    }
+    .entry-meta {
+      flex: 0 0 auto;
+      font-size: 8.4pt;
+      letter-spacing: 0.02em;
+      color: var(--steel);
+      white-space: nowrap;
+    }
+    .entry-sub {
+      margin-top: 0.8mm;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--steel);
+    }
+    .entry-body {
+      margin-top: 1mm;
+      font-size: 9.6pt;
+      line-height: 1.5;
+      color: var(--body);
+      text-align: justify;
+    }
+    .entry-body .highlight {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ---------- 教育 ---------- */
+    .edu-date {
+      flex: 0 0 auto;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 8.4pt;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .edu-detail {
+      margin-top: 1.3mm;
+      font-size: 9.4pt;
+      line-height: 1.58;
+      color: var(--body);
+    }
+    .edu-courses {
+      margin-top: 1.3mm;
+      padding-top: 1.3mm;
+      border-top: 0.5pt solid var(--rule-soft);
+      font-size: 9.2pt;
+      line-height: 1.56;
+      color: var(--muted);
+    }
+
+    /* ---------- 能力（定义表，标签左 / 值右同一行） ---------- */
+    .def-row {
+      display: grid;
+      grid-template-columns: 42mm minmax(0, 1fr);
+      align-items: baseline;
+      gap: 4mm;
+    }
+    .def-row + .def-row { margin-top: 1.5mm; }
+    .def-label {
+      font-size: 8.6pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .def-value {
+      font-size: 9.4pt;
+      line-height: 1.55;
+      color: var(--body);
+    }
+
+    /* ---------- 荣誉奖项 ---------- */
+    .honors-text {
+      font-size: 9.4pt;
+      line-height: 1.52;
+      color: var(--body);
+      text-align: justify;
+    }
+
+    /* ---------- 软件著作权（条目式：名称左 / 登记号右） ---------- */
+    .cr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 5mm;
+    }
+    .cr-row + .cr-row { margin-top: 1.4mm; }
+    .cr-name {
+      font-size: 9.6pt;
+      line-height: 1.5;
+      color: var(--body);
+    }
+    .cr-meta {
+      flex: 0 0 auto;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 8.4pt;
+      letter-spacing: 0.02em;
+      color: var(--steel);
+      white-space: nowrap;
+    }
+
+    /* 打印/导出 PDF：画布背景与投影退出 */
+    @media print {
+      html, body { background: #fff; }
+      body { padding: 0; min-height: 0; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body data-page-node-id="M3MwPAm38xQyTHR7YXRIcE">
+  <main class="page" data-resume-page data-template="quiet-blue-gray" data-page-node-id="PZCLcFryoS3kh6Vh2kQmln">
+
+    <!-- 页头 -->
+    <header class="head" data-resume-section="header" data-page-node-id="qFkBx6eZuWpDPWt0nPDqWf">
+      <div class="head-kicker" data-page-node-id="mZZE8pYMNHy8XjizzteE5r">Curriculum Vitae · Software &amp; AI</div>
+      <div class="head-name" data-page-node-id="6pZprDpNK3niK3Rl1duGuL">杨琪萱</div>
+      <div class="head-role" data-page-node-id="gm8XQjOgvtP4YeiiJkB04F">软件开发 / AI 应用 方向技术岗</div>
+      <div class="head-contact" data-page-node-id="CQFRV2HD5FMB2kJLEQ6xW8">
+        南京财经大学 · 计算机科学与技术 · 2028 届本科
+        <span class="sep" data-page-node-id="n2YGWY8vRsuLjYpdkcGEs0">|</span>189-****-8510
+        <span class="sep" data-page-node-id="maaF8gveyG0FucCGlgxUvC">|</span>906305554@qq.com
+        <span class="sep" data-page-node-id="5kFFuXUewd4YA11MhpqshC">|</span>江苏
+      </div>
+      <div class="head-rule" data-page-node-id="hDpFY0siIpbvmDdulPEtdT"></div>
+    </header>
+
+    <!-- 01 教育经历 -->
+    <!-- 01 个人概述 -->
+    <!-- 01 教育经历 -->
+    <!-- 03 教育经历 -->
+    <section class="sec" data-resume-section="education" data-page-node-id="ILnvTqL4F3NyEFq5EqeXkd">
+      <div class="sec-head" data-page-node-id="jHOnnlv690NcSYxUR4Lzl9">
+        <span class="sec-no" data-page-node-id="1AsmSBWoXF2eBrX1iyFd8X">01</span>
+        <span class="sec-name" data-page-node-id="w13qJduLae4ntVEgx1Gvbp">教育经历</span>
+        <span class="sec-en" data-page-node-id="jGYFUAg2AWVl3nvKCfm8X9">Education</span>
+      </div>
+      <article class="entry" data-resume-entry data-page-node-id="ZS0xJfDxoI3maIfzW5ryJJ">
+        <div class="entry-head" data-page-node-id="mhCys8hDEXLR6JvmtR0WYC">
+          <div class="entry-title" data-page-node-id="UHnUxbcFIjXQx5tDMptsXJ">南京财经大学 · 计算机科学与技术 · 本科</div>
+          <div class="edu-date" data-page-node-id="6C0r4maEAE3YztQNqoHe6D">2024.09 — 2028.09</div>
+        </div>
+        <div class="edu-detail" data-resume-body data-page-node-id="azfkuFoPKcUk1Jz2YESkSG">大一学年绩点排名专业前 1.5% · 学习优异一等奖学金 / 二等奖学金 / 三等奖学金 · 素质拓展奖学金 · 校级「优秀大学生」</div>
+        <div class="edu-courses" data-page-node-id="DoIYq98optHTpwNF9XLZr3">主修：操作系统 / Java / C / Python / 数据库系统 / Web 前端 / 软件工程 / 计算机网络 / 计算机组成。</div>
+      </article>
+    </section>
+
+    <!-- 02 个人概述 -->
+    <!-- 01 个人概述 -->
+    <section class="sec" data-resume-section="intro" data-page-node-id="e5gcTrlVW9i83tvccsHOLP">
+      <div class="sec-head" data-page-node-id="v5Bu4UGrv9EdZ4zyzQvQRF">
+        <span class="sec-no" data-page-node-id="8YiAe8MQXuCGS7FmOLfEHh">02</span>
+        <span class="sec-name" data-page-node-id="T1hSu7c0E0yLk0KKmM1wHc">个人概述</span>
+        <span class="sec-en" data-page-node-id="RzXIqJVaz3K0hDsyYCDWrm">Summary</span>
+      </div>
+      <div class="intro-body" data-resume-body data-page-node-id="id6EXggAdCJNBauzdI3ujs"><span class="lead" data-page-node-id="md45MFmsBRjsoyJMSyUCLg">南京财经大学计算机科学与技术专业 2024 级本科生，</span>参与「智探粮芯」储粮监测核心科研项目，并在多项 AI+ 赛事中担任技术岗，覆盖 AI 平台与嵌入式软件开发：粮食杂质智能定级方案已在中粮米业（虎林）实际部署。技术栈以 Python / Java / C / SQL 为主，兼有 HTML/CSS/JavaScript 与 SPSS 数据分析经验。</div>
+    </section>
+
+    <!-- 03 项目经历（原「竞赛经历」与「项目经历」合并） -->
+    <!-- 02 项目经历（原「竞赛经历」与「项目经历」合并） -->
+    <section class="sec" data-resume-section="projects" data-page-node-id="BNvFm0PyhAkwkpR5fYiP4J">
+      <div class="sec-head" data-page-node-id="76tG1RTd4spenZ6nDKu2AS">
+        <span class="sec-no" data-page-node-id="920VcbIyLOD278BypKXNRd">03</span>
+        <span class="sec-name" data-page-node-id="bArQPW1S8Un4uXrF6CuOEE">项目经历</span>
+        <span class="sec-en" data-page-node-id="1OvMNLy0HVeV6nz4hd5eKL">Projects</span>
+      </div>
+
+      <article class="entry" data-resume-entry data-page-node-id="FbeuufpKbgOTfHpwFQM5uf">
+        <div class="entry-head" data-page-node-id="Qlw4ajQWlqCREwVXx264C5">
+          <div class="entry-title" data-page-node-id="GsGptzZ5H6calNb8hXQW75">智探粮芯 · 全周期智慧储粮监测体系</div>
+          <div class="entry-meta" data-page-node-id="e7GL6aPFv71RK5TKUtJyoZ">南京财经大学 · 核心科研项目</div>
+        </div>
+        <div class="entry-sub" data-page-node-id="aCNpRfzmxEHCjyIgyRSvZB">平台 / 嵌入式软件开发</div>
+        <div class="entry-body" data-resume-body data-page-node-id="C1DWuuy8TQYuVlMsqpHNXu">参与多模态智能探杆的嵌入式软件与大模型粮情问答平台开发，以<span class="highlight" data-page-node-id="YVLserGB1DozVk41V255F7">「监测-诊断-处置-反馈」闭环</span>整合传感数据并输出粮情处置建议；项目已在中粮米业（虎林）等粮库完成试点部署。</div>
+      </article>
+
+      <article class="entry" data-resume-entry data-page-node-id="kcrktBmkoo6wqMmJXpaDQy">
+        <div class="entry-head" data-page-node-id="Yp9la68y2Y4sBd5UnP47F6">
+          <div class="entry-title" data-page-node-id="TPApII3IzqeRvG5zlL7BuR">智粮元界 · 粮食杂质智能定级</div>
+          <div class="entry-meta" data-page-node-id="KH9rNZx930N40mR4mrOiae">挑战杯 东北专项 / 中粮揭榜挂帅赛道</div>
+        </div>
+        <div class="entry-sub" data-page-node-id="9B9KRLTDwTPBXo1YdVcZFS">嵌入式软件开发</div>
+        <div class="entry-body" data-resume-body data-page-node-id="9hBRtCwZaTu39dY8To5Laq">在嵌入式软件方向参与粮食杂质智能定级方案，方案已在<span class="highlight" data-page-node-id="gDrudUyr8CcL1F57rJasBY">「中粮米业（虎林）」完成实际部署</span>，并与多院系队员协作构建整体参赛方案。</div>
+      </article>
+
+      <article class="entry" data-resume-entry data-page-node-id="ZE2KHHRSWaJerHP0xevd25">
+        <div class="entry-head" data-page-node-id="DNthF5GKbQeZax0PlitUWQ">
+          <div class="entry-title" data-page-node-id="nzHJcbPCvtg7tCFDdxoZKH">智绘光影 · AI 六维力控机械臂艺术灯具</div>
+          <div class="entry-meta" data-page-node-id="i8RFRuS2Ri1a4BBrP6PwC6">挑战杯 · 科技发明制作 A 类</div>
+        </div>
+        <div class="entry-sub" data-page-node-id="BZJyPnXGjYvV06TY4XoQBi">技术岗</div>
+        <div class="entry-body" data-resume-body data-page-node-id="vE11nH8MxogvQr6AOHXyL2">参与六维力控机械臂开发，把 AI 力控技术接入艺术灯具加工流程，服务灯具出海场景。</div>
+      </article>
+
+      <article class="entry" data-resume-entry data-page-node-id="cAHEY9RrYIQPb7vhSrJcGr">
+        <div class="entry-head" data-page-node-id="fv7TJ0OqEPB7MS3hnLojGM">
+          <div class="entry-title" data-page-node-id="5j34TgzN1CHTzqAn0d83H2">乡音桥 · 乡村适老化便民服务网页</div>
+          <div class="entry-meta" data-page-node-id="rwGNE1L2XQZfKXA6TJY8qS">OPC 息壤杯 · 惠民赛道</div>
+        </div>
+        <div class="entry-sub" data-page-node-id="lOQcdcpnOGui3n6PUK2q1a">队长</div>
+        <div class="entry-body" data-resume-body data-page-node-id="k9ErlFeSZJzBNrmL1NjKpL">作为队长推进「AI + 养老」网页产品：面向不会普通话、不识字的老年人设计日常沟通路径，产品已初步成型并投入实践。</div>
+      </article>
+
+      <article class="entry" data-resume-entry data-page-node-id="p8XSM4SuYKuH4Rp6l4zDY6">
+        <div class="entry-head" data-page-node-id="a8vcwNDvqLoDONtgXXRemD">
+          <div class="entry-title" data-page-node-id="xtOs4bfYRM2IMga7ezQcWf">正大杯市场调查与分析</div>
+          <div class="entry-meta" data-page-node-id="YljuFcvBI90fcIEsgIsoO9">校级二等奖</div>
+        </div>
+        <div class="entry-sub" data-page-node-id="GAAsta28cuBaW6X91MNBzK">数据分析岗</div>
+        <div class="entry-body" data-resume-body data-page-node-id="SBKJFaSpPRrd0U7ebVNpJj">先检索文献并搭建分析模型，再据此完成问卷设计；用 SPSS 完成数据分析与可视化，<span class="highlight" data-page-node-id="JGpzRokfsHswGGZMM4CPyE">验证数据相关性与因子范围</span>，并协助队友补齐交付内容。</div>
+      </article>
+    </section>
+
+    <!-- 04 核心能力 -->
+    <!-- 04 核心能力 -->
+    <section class="sec" data-resume-section="skills" data-page-node-id="AU2j2sBUMDDvmqsrvUt162">
+      <div class="sec-head" data-page-node-id="6cvMEzNmX3ltivRH5Zd8gP">
+        <span class="sec-no" data-page-node-id="7V2xSMIeMDLxaRIBWTgoRh">04</span>
+        <span class="sec-name" data-page-node-id="s4B0jcl2TNXsTKP4VLzHcL">核心能力</span>
+        <span class="sec-en" data-page-node-id="dfP9H0Vn5DrQifOLsGu2p5">Skills</span>
+      </div>
+      <div class="def-row" data-page-node-id="ELzo69PFsCZpYf9iaAmn37">
+        <div class="def-label" data-page-node-id="EMEZpEAsBiPRrF3jBsgSyi">Languages</div>
+        <div class="def-value" data-page-node-id="UEXVtpuoSQNlTFbeRpROh0">Python / Java / C / SQL</div>
+      </div>
+      <div class="def-row" data-page-node-id="INqa4jcNDemDtYdrBStno1">
+        <div class="def-label" data-page-node-id="zmqAsrU1OOKHKx5MGdQszc">Front-end &amp; Tools</div>
+        <div class="def-value" data-page-node-id="hVchKSdvoJfaGDjMKVDRa6">HTML / CSS / JavaScript · VS Code / Android Studio / PyCharm</div>
+      </div>
+      <div class="def-row" data-page-node-id="OMCZWTY6gwQ12pWlLcWH96">
+        <div class="def-label" data-page-node-id="DE23HBtxlDzrjkJRiFlZFn">Data Analysis</div>
+        <div class="def-value" data-page-node-id="U0EWWrwGukWlesaZgWWjcx">SPSS / Excel / WPS</div>
+      </div>
+    </section>
+
+    <!-- 05 荣誉奖项 -->
+    <!-- 05 荣誉奖项 -->
+    <section class="sec" data-resume-section="honors" data-page-node-id="MFRM2MUPeMq6vlV0oVp9BZ">
+      <div class="sec-head" data-page-node-id="ITSfGZvuW6Ax87pRFMECHD">
+        <span class="sec-no" data-page-node-id="qlG4BcTZi52cuTcqiQfa4w">05</span>
+        <span class="sec-name" data-page-node-id="KWW3A0SVOit1lwvDJmYq4G">荣誉奖项</span>
+        <span class="sec-en" data-page-node-id="2lIEBRS7T2vwPHNBB5BULy">Honors</span>
+      </div>
+      <div class="honors-text" data-resume-body data-page-node-id="cPpjC1gojvrMrCowI35REq">CET-4 550+ / CET-6 500+ · 正大杯市场调查与分析 校二等奖 · 江苏省高等数学竞赛 省三等奖 · 纵经天下企业案例分析大赛 三等奖 · 同花顺杯 国赛三等奖 / 校一等奖 · 经济协会证投部「优秀部员」</div>
+    </section>
+
+    <!-- 06 软件著作权 -->
+    <!-- 06 软件著作权 -->
+    <section class="sec" data-resume-section="copyrights" data-page-node-id="I7YnYTBFHK7B40Bo1Z8P0E">
+      <div class="sec-head" data-page-node-id="vFZSbhp3GGHjp5oOVVWMrU">
+        <span class="sec-no" data-page-node-id="MylC9uFijDvY1DCL2BslOV">06</span>
+        <span class="sec-name" data-page-node-id="QwOgzZnhIfQxXx6eX5vxaH">软件著作权</span>
+        <span class="sec-en" data-page-node-id="DW6MwnFhBTUQjVEcxCp4C2">Copyrights</span>
+      </div>
+      <div class="cr-row" data-page-node-id="pClju6lrkDtrFla0XRP7Yv">
+        <span class="cr-name" data-page-node-id="O3XlmliH3bmm6gZEmNZQeG">智粮元界——粮食杂质检测系统 V1.0</span>
+        <span class="cr-meta" data-page-node-id="gyJnrAvG4eW1KDsLpF6pPF">参与书写 · 2026SR0123369</span>
+      </div>
+      <div class="cr-row" data-page-node-id="XZfCnYl4L1GTBq5wQqJYV9">
+        <span class="cr-name" data-page-node-id="fiDEUewCBTDL2TcJMqM3SN">智探粮芯粮食专家咨询系统 V1.0</span>
+        <span class="cr-meta" data-page-node-id="5uAl59OhEFraBKECehWC2b">参与书写 · 2026SR0151656</span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
